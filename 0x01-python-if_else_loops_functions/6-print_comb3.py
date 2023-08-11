@@ -6,5 +6,5 @@ for i in range(48, 58):
             print("{}{}".format(chr(i), chr(j)))
             break
         print("{}".format(chr(i)), end="")
-        print("{}, ".format(chr(j)), end=" ")
+        print("{}, ".format(chr(j)), end="")
         j = j + 1
