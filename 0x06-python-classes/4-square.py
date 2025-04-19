@@ -3,7 +3,9 @@
 
 
 class Square:
-    """Represents a square with a size that can be set and used to compute area"""
+    """Represents a square with a size that can be set and used to compute
+       area
+    """
     def __init__(self, size=0):
         """Initializes the square with a given size.
 
