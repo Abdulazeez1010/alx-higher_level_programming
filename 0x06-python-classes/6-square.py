@@ -17,10 +17,6 @@ class Square:
           TypeError: If size is not an integer.
           ValueError: If size is less than 0.
         """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
         self.__size = size
         self.__position = position
 
@@ -50,7 +46,7 @@ class Square:
                 len(value) != 2 or
                 not all(isinstance(num, int) and num >= 0 for num in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = position
+        self.__position = value
 
     def area(self):
         """Calculates and returns the current area of the square"""
