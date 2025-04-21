@@ -72,12 +72,12 @@ class Square:
             return ""
         lines = []
 
-        #Add new lines for vertical position (y offset)
+        # Add new lines for vertical position (y offset)
         for _ in range(self.position[1]):
             lines.append("")
 
         for _ in range(self.__size):
-            #Add spaces for horizontal position (x offset)
+            # Add spaces for horizontal position (x offset)
             line = " " * self.__position[0] + "#" * self.__size
             lines.append(line)
         return "\n".join(lines)
