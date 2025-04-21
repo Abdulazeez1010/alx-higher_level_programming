@@ -9,7 +9,8 @@ class Node:
 
         Args:
             data(int): The value to store in the node.
-            next_node (Node or None): The next node in the linked list, default to none.
+            next_node (Node or None): The next node in the linked list,
+            default to none.
 
         Raises:
             TypeError: If data is not an integer.
@@ -41,6 +42,7 @@ class Node:
         if value is not None and not isinstance(value, Node):
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
+
 
 class SinglyLinkedList:
     """This class defines a singly linked list"""
