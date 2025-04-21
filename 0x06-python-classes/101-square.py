@@ -65,11 +65,13 @@ class Square:
                 for k in range(self.__size):
                     print("#", end="")
                 print()
+
     def __str__(self):
         """Returns a string representation of the square, like my_print()."""
         if self.__size == 0:
             return ""
         lines = []
+
         #Add new lines for vertical position (y offset)
         for _ in range(self.position[1]):
             lines.append("")
@@ -78,4 +80,4 @@ class Square:
             #Add spaces for horizontal position (x offset)
             line = " " * self.__position[0] + "#" * self.__size
             lines.append(line)
-        return("\n").join(lines)
+        return "\n".join(lines)
