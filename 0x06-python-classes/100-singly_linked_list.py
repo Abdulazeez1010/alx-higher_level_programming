@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-"""This module defines a class Node"""
+"""
+This module defines two classes for creating ans managing a singly linked list:
+
+- Node: Represents an element of the list.
+- SinglyLinkedList: Manages the linked list allows sorted insertion.
+"""
 
 
 class Node:
