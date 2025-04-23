@@ -22,5 +22,5 @@ def add_integer(a, b=98):
         raise TypeError("b must be an integer")
     try:
         return int(a)+int(b)
-    except(OverflowError):
+    except OverflowError:
         raise OverflowError("integer value too large")
