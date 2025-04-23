@@ -11,6 +11,10 @@
 -4
 >>> add_integer(4)
 102
+>>> add_integer(2e409, 5e400)
+Traceback (most recent call last):
+...
+OverflowError: integer value too large
 >>> add_integer(True, 4)
 Traceback (most recent call last):
 ...
