@@ -11,6 +11,14 @@
 -4
 >>> add_integer(4)
 102
+>>> add_integer(True, 4)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add_integer(3, False)
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
 >>> add_integer("ab")
 Traceback (most recent call last):
 ...
