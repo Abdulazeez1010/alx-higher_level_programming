@@ -16,6 +16,12 @@ Traceback (most recent call last):
 ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
+>>> matrix = [4, 2, 3]
+>>> matrix_divided(matrix, 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
 >>> matrix = [[1, 2, 3], [4, 5, 9]]
 >>> matrix_divided(matrix, 'd')
 Traceback (most recent call last):
@@ -27,3 +33,7 @@ TypeError: div must be a number
 Traceback (most recent call last):
 ...
 ZeroDivisionError: division by zero
+
+>>> matrix = [[1e400, 5, 2], [1, 7, 9e379]]
+>>> matrix_divided(matrix, 7e520)
+[[nan, 0.0, 0.0], [0.0, 0.0, nan]]

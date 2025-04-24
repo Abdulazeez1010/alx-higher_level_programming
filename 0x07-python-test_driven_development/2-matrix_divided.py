@@ -28,4 +28,7 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    return [[round(num/div, 2) for num in row] for row in matrix]
+    try:
+        return [[round(num/div, 2) for num in row] for row in matrix]
+    except OverflowError:
+        raise OverflowError("integer value too large")
