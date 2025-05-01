@@ -10,7 +10,7 @@ def matrix_mul(m_a, m_b):
         raise TypeError('m_b must be a list')
     if not all(isinstance(row, list) for row in m_a):
         raise TypeError('m_a must be a list of lists')
-    if not all(isinstance(row, list) for  row in m_b):
+    if not all(isinstance(row, list) for row in m_b):
         raise TypeError('m_b must be a list of lists')
     if m_a == [] or m_a == [[]]:
         raise ValueError('m_a can\'t be empty')
@@ -28,20 +28,23 @@ def matrix_mul(m_a, m_b):
         raise ValueError('m_a and m_b can\'t be multiplied')
 
     final_result = []
-    i=0; j=0; k=0; l=0;
+    i = 0
+    j = 0
+    k = 0
+    p = 0
     for m in range(len(m_a)):
         final_result_row = []
         for n in range(len(m_b[0])):
             result = 0
             for b in range(len(m_b)):
-                result +=  m_a[i][j] * m_b[k][l]
-                j+=1
-                k+=1
-            j=0
-            k=0
-            l+=1
+                result += m_a[i][j]*m_b[k][p]
+                j += 1
+                k += 1
+            j = 0
+            k = 0
+            p += 1
             final_result_row.append(result)
         final_result.append(final_result_row)
-        l = 0
-        i+= 1
+        p = 0
+        i += 1
     return final_result
