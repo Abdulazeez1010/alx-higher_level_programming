@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-"""The unittestmodule for max_integer"""
+"""The unittest module for max_integer"""
 
 import unittest
 
 max_integer = __import__('6-max_integer').max_integer
 
 class TestMaxInteger(unittest.TestCase):
+    """Unit test for the max_integer function"""
     def test_max_integer(self):
+        """Test cases to validate correct output for max_integer"""
         list_0 = []
         list_1 = [6]
         list_2 = [1, 8, 2, 7, 3, 6]
