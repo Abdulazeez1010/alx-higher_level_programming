@@ -3,6 +3,12 @@
 
 
 class MyList(list):
+    """A custom list class that adds a method to print the list in sorted order.
+
+    Inherits from:
+        list: The built-in list class.
+    """
+
     def print_sorted(self):
         """Prints the list sorted (ascending sort)"""
         print(sorted(self))
