@@ -11,5 +11,9 @@ class MyList(list):
     """
 
     def print_sorted(self):
-        """Prints the list sorted (ascending sort)"""
-        print(sorted(self))
+        """Returns a new containing the sorted elements"""
+        return sorted(self)
+
+    def __str__(self):
+        """Returns a string representation of the list (sorted)"""
+        return str(sorted(self))
