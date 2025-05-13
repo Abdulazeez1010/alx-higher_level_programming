@@ -38,3 +38,18 @@ TypeError: my_int must be an integer
 Traceback (most recent call last):
 ...
 TypeError: my_int must be an integer
+
+>>> bg.integer_validator("my_int", (3, 5))
+Traceback (most recent call last):
+...
+TypeError: my_int must be an integer
+
+>>> bg.integer_validator("my_int", None)
+Traceback (most recent call last):
+...
+TypeError: my_int must be an integer
+
+>>> bg.integer_validator("my_int", {'abs' : 2})
+Traceback (most recent call last):
+...
+TypeError: my_int must be an integer
