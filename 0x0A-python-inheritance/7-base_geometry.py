@@ -3,7 +3,7 @@
 
 
 class BaseGeometry:
-    """Empty class BaseGeometry"""
+    """BaseGeometry class with basic geometry validation methods"""
     pass
 
     def area(self):
@@ -11,9 +11,12 @@ class BaseGeometry:
         raise Exception('area() is not implemented')
 
     def integer_validator(self, name, value):
-        """Validates value.
+        """Validates that value is a positive integer.
 
-        name is always a string.
+        Args:
+            name(str): Name of the value.
+            value(int): The value to validate.
+
         Raises:
             TypeError: If value is not an integer.
             ValueError: If value is less than or equal to 0.
