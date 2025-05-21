@@ -9,14 +9,14 @@ def pascal_triangle(n):
         triangle of n.
     """
     if n <= 0:
-        return [[]]
+        return []
     if n == 1:
         return [[1]]
     if n == 2:
-        pasc = []
-        pasc.append([1])
-        pasc.append([1, 1])
-        return pasc
+        final_L = []
+        final_L.append([1])
+        final_L.append([1, 1])
+        return final_L
     if n > 2:
         final_L = []
         final_L.append([1])
