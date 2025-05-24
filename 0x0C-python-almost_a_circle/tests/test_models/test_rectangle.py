@@ -3,6 +3,8 @@
 
 
 import unittest
+from io import StringIO
+import sys
 
 
 from models.rectangle import Rectangle
@@ -17,10 +19,10 @@ class TestRectangle(unittest.TestCase):
         r3 = Rectangle(10, 2, 0, 0, 12)
         r4 = Rectangle(5, 8)
 
-        self.assertEqual(7, r1.id)
-        self.assertEqual(8, r2.id)
+        self.assertEqual(8, r1.id)
+        self.assertEqual(9, r2.id)
         self.assertEqual(12, r3.id)
-        self.assertEqual(9, r4.id)
+        self.assertEqual(10, r4.id)
         self.assertEqual(40, r4.area())
         self.assertEqual(6, Rectangle(3, 2).area())
         self.assertEqual(35, Rectangle(5, 7, 1, 1, 3).area())
@@ -78,3 +80,11 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
            Rectangle(4, 1, 3, -2)
         self.assertEqual(str(context.exception), "y must be >= 0")
+
+    def test_display(self):
+        rect = Rectangle(2, 2)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual("##\n##\n", captured_output.getvalue())
