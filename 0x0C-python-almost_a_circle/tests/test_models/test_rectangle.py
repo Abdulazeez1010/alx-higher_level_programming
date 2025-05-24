@@ -21,6 +21,9 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(8, r2.id)
         self.assertEqual(12, r3.id)
         self.assertEqual(9, r4.id)
+        self.assertEqual(40, r4.area())
+        self.assertEqual(6, Rectangle(3, 2).area())
+        self.assertEqual(35, Rectangle(5, 7, 1, 1, 3).area())
 
     def test_height_type_error(self):
         with self.assertRaises(TypeError) as context:
