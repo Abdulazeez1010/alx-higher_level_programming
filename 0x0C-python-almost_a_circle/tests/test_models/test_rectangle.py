@@ -19,10 +19,10 @@ class TestRectangle(unittest.TestCase):
         r3 = Rectangle(10, 2, 0, 0, 12)
         r4 = Rectangle(5, 8)
 
-        self.assertEqual(8, r1.id)
-        self.assertEqual(9, r2.id)
+        self.assertEqual(10, r1.id)
+        self.assertEqual(11, r2.id)
         self.assertEqual(12, r3.id)
-        self.assertEqual(10, r4.id)
+        self.assertEqual(12, r4.id)
         self.assertEqual(40, r4.area())
         self.assertEqual(6, Rectangle(3, 2).area())
         self.assertEqual(35, Rectangle(5, 7, 1, 1, 3).area())
@@ -81,9 +81,27 @@ class TestRectangle(unittest.TestCase):
            Rectangle(4, 1, 3, -2)
         self.assertEqual(str(context.exception), "y must be >= 0")
 
-    def test_display_output(self):
-        rect = Rectangle(3, 2)
+    def test_display_without_x_and_y(self):
+        rect = Rectangle(3, 2, 0, 0)
         expected_output = "###\n###\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+    def test_display_without_y(self):
+        rect = Rectangle(3, 2, 2, 0)
+        expected_output = "  ###\n  ###\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+    def test_display(self):
+        rect = Rectangle(2, 2, 2, 2)
+        expected_output = "\n\n  ##\n  ##\n"
         captured_output = StringIO()
         sys.stdout = captured_output
         rect.display()
@@ -96,4 +114,4 @@ class TestRectangle(unittest.TestCase):
 
     def test_str_method(self):
         rect = Rectangle(5, 5, 1)
-        self.assertEqual("[Rectangle] (12) 1/0 - 5/5", str(rect))
+        self.assertEqual("[Rectangle] (14) 1/0 - 5/5", str(rect))
