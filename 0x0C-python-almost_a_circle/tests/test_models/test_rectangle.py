@@ -82,12 +82,13 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(context.exception), "y must be >= 0")
 
     def test_display_output(self):
-        rect = Rectangle(2, 2, 0, 2)
+        rect = Rectangle(3, 2)
+        expected_output = "###\n###\n"
         captured_output = StringIO()
         sys.stdout = captured_output
         rect.display()
         sys.stdout = sys.__stdout__
-        self.assertEqual("##\n##\n", captured_output.getvalue())
+        self.assertEqual(captured_output.getvalue(), expected_output)
 
     def test_str_method(self):
         rect = Rectangle(4, 6, 2, 1, 12)
