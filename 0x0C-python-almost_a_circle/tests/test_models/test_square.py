@@ -21,6 +21,26 @@ class TestSquare(unittest.TestCase):
     def test_str_method_with_x_and_y(self):
         self.assertEqual("[Square] (38) 2/6 - 4", str(Square(4, 2, 6)))
 
+    def test_type_error_with_x(self):
+        with self.assertRaises(TypeError) as context:
+            Square(3, "4")
+        self.assertEqual(str(context.exception), "x must be an integer")
+
+    def test_type_error_with_y(self):
+        with self.assertRaises(TypeError) as context:
+            Square(3, 5, "4")
+        self.assertEqual(str(context.exception), "y must be an integer")
+
+    def test_value_error_with_x(self):
+        with self.assertRaises(ValueError) as context:
+            Square(3, -2)
+        self.assertEqual(str(context.exception), "x must be >= 0")
+
+    def test_value_error_with_y(self):
+        with self.assertRaises(ValueError) as context:
+            Square(3, 5, -1)
+        self.assertEqual(str(context.exception), "y must be >= 0")
+
     def test_square_area_method(self):
         sq = Square(6)
         self.assertEqual(36, sq.area())
