@@ -115,3 +115,28 @@ class TestRectangle(unittest.TestCase):
     def test_str_method(self):
         rect = Rectangle(5, 5, 1)
         self.assertEqual("[Rectangle] (14) 1/0 - 5/5", str(rect))
+
+    def test_update_method_with_id(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(89)
+        self.assertEqual("[Rectangle] (89) 10/10 - 10/10", str(rect))
+
+    def test_update_method_with_id_and_w(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(89, 3)
+        self.assertEqual("[Rectangle] (89) 10/10 - 3/10", str(rect))
+
+    def test_update_method_with_id_w_and_h(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(89, 4, 2)
+        self.assertEqual("[Rectangle] (89) 10/10 - 4/2", str(rect))
+
+    def test_update_method_with_id_w_h_and_x(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(89, 5, 4, 1)
+        self.assertEqual("[Rectangle] (89) 1/10 - 5/4", str(rect))
+
+    def test_update_method_with_id_w_h_x_and_y(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(89, 3, 2, 4, 5)
+        self.assertEqual("[Rectangle] (89) 4/5 - 3/2", str(rect))
