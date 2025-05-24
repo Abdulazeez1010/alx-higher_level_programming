@@ -82,7 +82,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(context.exception), "y must be >= 0")
 
     def test_display(self):
-        rect = Rectangle(2, 2)
+        rect = Rectangle(2, 2, 0, 2)
         captured_output = StringIO()
         sys.stdout = captured_output
         rect.display()
