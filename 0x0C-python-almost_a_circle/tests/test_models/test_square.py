@@ -8,18 +8,23 @@ import sys
 
 
 from models.square import Square
+from models.base import Base
 
 
 class TestSquare(unittest.TestCase):
     """Unit test for the Square class."""
+    def setUp(self):
+        """Reset the Base class counter before each test."""
+        Base._Base__nb_objects = 0
+
     def test_str_method(self):
-        self.assertEqual("[Square] (36) 0/0 - 5", str(Square(5)))
+        self.assertEqual("[Square] (1) 0/0 - 5", str(Square(5)))
 
     def test_str_method_with_x(self):
-        self.assertEqual("[Square] (37) 4/0 - 3", str(Square(3, 4)))
+        self.assertEqual("[Square] (1) 4/0 - 3", str(Square(3, 4)))
 
     def test_str_method_with_x_and_y(self):
-        self.assertEqual("[Square] (38) 2/6 - 4", str(Square(4, 2, 6)))
+        self.assertEqual("[Square] (1) 2/6 - 4", str(Square(4, 2, 6)))
 
     def test_type_error_with_x(self):
         with self.assertRaises(TypeError) as context:
