@@ -31,6 +31,11 @@ class TestSquare(unittest.TestCase):
             Square(3, 5, "4")
         self.assertEqual(str(context.exception), "y must be an integer")
 
+    def test_type_error_with_value(self):
+        with self.assertRaises(TypeError) as context:
+            Square("4", 3, 2)
+        self.assertEqual(str(context.exception), "width must be an integer")
+
     def test_value_error_with_x(self):
         with self.assertRaises(ValueError) as context:
             Square(3, -2)
@@ -40,6 +45,11 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             Square(3, 5, -1)
         self.assertEqual(str(context.exception), "y must be >= 0")
+
+    def test_value_error_with_value(self):
+        with self.assertRaises(ValueError) as context:
+            Square(-3, 5, 2)
+        self.assertEqual(str(context.exception), "width must be > 0")
 
     def test_square_area_method(self):
         sq = Square(6)
