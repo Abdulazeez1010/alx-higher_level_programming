@@ -89,3 +89,38 @@ class TestSquare(unittest.TestCase):
         sq.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(expected_output, captured_string.getvalue())
+
+    def test_update_with_id(self):
+        sq = Square(5)
+        sq.update(10)
+        self.assertEqual("[Square] (10) 0/0 - 5", str(sq))
+
+    def test_update_with_id_and_size(self):
+        sq = Square(5)
+        sq.update(1, 2)
+        self.assertEqual("[Square] (1) 0/0 - 2", str(sq))
+
+    def test_update_with_id_size_and_x(self):
+        sq = Square(5)
+        sq.update(1, 2, 3)
+        self.assertEqual("[Square] (1) 3/0 - 2", str(sq))
+
+    def test_update_with_id_size_x_and_y(self):
+        sq = Square(5)
+        sq.update(1, 2, 3, 4)
+        self.assertEqual("[Square] (1) 3/4 - 2", str(sq))
+
+    def test_update_with_x(self):
+        sq = Square(1, 2, 3, 4)
+        sq.update(x=12)
+        self.assertEqual("[Square] (4) 12/3 - 1", str(sq))
+
+    def test_update_with_size_and_y(self):
+        sq = Square(1, 2, 3, 4)
+        sq.update(size=7, y=1)
+        self.assertEqual("[Square] (4) 2/1 - 7", str(sq))
+
+    def test_update_with_size_id_and_y(self):
+        sq = Square(1, 2, 3, 4)
+        sq.update(size=7, id=89, y=1)
+        self.assertEqual("[Square] (89) 2/1 - 7", str(sq))
