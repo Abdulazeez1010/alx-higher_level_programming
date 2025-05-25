@@ -7,9 +7,16 @@ import json
 
 
 from models.base import Base
+from models.rectangle import Rectangle
+
 
 class TestBase(unittest.TestCase):
     """Unit test for the Base class"""
+
+    def setUp(self):
+        """Reset the Base class counter before each test."""
+        Base._Base__nb_objects = 0
+
     def test_base(self):
         """Test cases to validate correct output for Base class"""
         b1 = Base()
@@ -23,3 +30,10 @@ class TestBase(unittest.TestCase):
         self.assertEqual(13, b3.id)
         self.assertEqual(3, b4.id)
         self.assertEqual(4, b5.id)
+
+    def test_to_json_string(self):
+        rect = Rectangle(10, 7, 2, 8)
+        dictionary = rect.to_dictionary()
+        result = Base.to_json_string([dictionary])
+        expected_output = '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]'
+        self.assertEqual(sorted(expected_output), sorted(result))
