@@ -8,10 +8,16 @@ import sys
 
 
 from models.rectangle import Rectangle
+from models.base import Base
 
 
 class TestRectangle(unittest.TestCase):
     """Unit rest for the Rectangle class"""
+
+    def setUp(self):
+        """Reset the Base class counter before each test."""
+        Base._Base__nb_objects = 0
+
     def test_rectangle(self):
         """Test cases to validate correct output for Rectangle"""
         r1 = Rectangle(10, 2)
@@ -19,10 +25,10 @@ class TestRectangle(unittest.TestCase):
         r3 = Rectangle(10, 2, 0, 0, 12)
         r4 = Rectangle(5, 8)
 
-        self.assertEqual(10, r1.id)
-        self.assertEqual(11, r2.id)
+        self.assertEqual(1, r1.id)
+        self.assertEqual(2, r2.id)
         self.assertEqual(12, r3.id)
-        self.assertEqual(12, r4.id)
+        self.assertEqual(3, r4.id)
         self.assertEqual(40, r4.area())
         self.assertEqual(6, Rectangle(3, 2).area())
         self.assertEqual(35, Rectangle(5, 7, 1, 1, 3).area())
@@ -114,7 +120,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_str_method(self):
         rect = Rectangle(5, 5, 1)
-        self.assertEqual("[Rectangle] (14) 1/0 - 5/5", str(rect))
+        self.assertEqual("[Rectangle] (1) 1/0 - 5/5", str(rect))
 
     def test_update_method_with_id(self):
         rect = Rectangle(10, 10, 10, 10)
@@ -144,12 +150,12 @@ class TestRectangle(unittest.TestCase):
     def test_update_method_with_height(self):
         rect = Rectangle(10, 10, 10, 10)
         rect.update(height=1)
-        self.assertEqual("[Rectangle] (15) 10/10 - 10/1", str(rect))
+        self.assertEqual("[Rectangle] (1) 10/10 - 10/1", str(rect))
 
     def test_update_method_with_width_and_x(self):
         rect = Rectangle(10, 10, 10, 10)
         rect.update(width=1, x=2)
-        self.assertEqual("[Rectangle] (21) 2/10 - 1/10", str(rect))
+        self.assertEqual("[Rectangle] (1) 2/10 - 1/10", str(rect))
 
     def test_update_method_with_y_width_x_and_id(self):
         rect = Rectangle(10, 10, 10, 10)
@@ -159,4 +165,10 @@ class TestRectangle(unittest.TestCase):
     def test_update_method_with_x_height_y_and_width(self):
         rect = Rectangle(10, 10, 10, 10)
         rect.update(x=1, height=2, y=3, width=4)
-        self.assertEqual("[Rectangle] (22) 1/3 - 4/2", str(rect))
+        self.assertEqual("[Rectangle] (1) 1/3 - 4/2", str(rect))
+
+    def test_to_dictionary(self):
+        rect = Rectangle(10, 2, 1, 9)
+        result = rect.to_dictionary()
+        expected = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertEqual(expected, result)
