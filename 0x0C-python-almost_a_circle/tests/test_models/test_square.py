@@ -129,3 +129,9 @@ class TestSquare(unittest.TestCase):
         sq = Square(1, 2, 3, 4)
         sq.update(size=7, id=89, y=1)
         self.assertEqual("[Square] (89) 2/1 - 7", str(sq))
+
+    def test_square_dict(self):
+        sq = Square(10, 2, 1)
+        result = sq.to_dictionary()
+        expected_output = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
+        self.assertEqual(expected_output, result)
