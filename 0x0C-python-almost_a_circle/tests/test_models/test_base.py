@@ -48,12 +48,19 @@ class TestBase(unittest.TestCase):
         expected_output = [{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}, {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}]
         self.assertEqual(expected_output, data)
 
-    def test_save_to_file_rect(self):
+    def test_save_to_file_rect_empty(self):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             content = file.read()
         data = json.loads(content)
-        #expected_output = [{"y": 0, "x": 0, "id": 1, "width": 0, "height": 0}, {"y": 0, "x": 0, "id": 2, "width": 0, "height": 0}]
+        expected_output = []
+        self.assertEqual(expected_output, data)
+
+    def test_save_to_file_rect_none(self):
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+        data = json.loads(content)
         expected_output = []
         self.assertEqual(expected_output, data)
 
@@ -65,6 +72,22 @@ class TestBase(unittest.TestCase):
             content = file.read()
         data = json.loads(content)
         expected_output = [{"y": 8, "x": 2, "id": 1, "size": 7}, {"y": 0, "x": 0, "id": 2, "size": 4}]
+        self.assertEqual(expected_output, data)
+
+    def test_save_to_file_square_empty(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            content = file.read()
+        data = json.loads(content)
+        expected_output = []
+        self.assertEqual(expected_output, data)
+
+    def test_save_to_file_square_none(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            content = file.read()
+        data = json.loads(content)
+        expected_output = []
         self.assertEqual(expected_output, data)
 
     def test_from_json_string(self):
