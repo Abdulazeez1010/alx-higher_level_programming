@@ -60,9 +60,7 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             content = file.read()
-        data = json.loads(content)
-        expected_output = []
-        self.assertEqual(expected_output, data)
+        self.assertEqual(content, "[]")
 
     def test_save_to_file_square(self):
         s1 = Square(7, 2, 8)
@@ -86,9 +84,7 @@ class TestBase(unittest.TestCase):
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
             content = file.read()
-        data = json.loads(content)
-        expected_output = []
-        self.assertEqual(expected_output, data)
+        self.assertEqual(content, "[]")
 
     def test_from_json_string(self):
         list_input = [
