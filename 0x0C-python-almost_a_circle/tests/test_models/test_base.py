@@ -48,6 +48,15 @@ class TestBase(unittest.TestCase):
         expected_output = [{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}, {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}]
         self.assertEqual(expected_output, data)
 
+    def test_save_to_file_rect(self):
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+        data = json.loads(content)
+        #expected_output = [{"y": 0, "x": 0, "id": 1, "width": 0, "height": 0}, {"y": 0, "x": 0, "id": 2, "width": 0, "height": 0}]
+        expected_output = []
+        self.assertEqual(expected_output, data)
+
     def test_save_to_file_square(self):
         s1 = Square(7, 2, 8)
         s2 = Square(4)
