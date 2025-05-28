@@ -38,7 +38,7 @@ class TestBase(unittest.TestCase):
         expected_output = '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]'
         self.assertEqual(sorted(expected_output), sorted(result))
 
-    def test_json_string_to_file(self):
+    def test_save_to_file_rect(self):
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         Rectangle.save_to_file([r1, r2])
@@ -46,6 +46,16 @@ class TestBase(unittest.TestCase):
             content = file.read()
         data = json.loads(content)
         expected_output = [{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}, {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}]
+        self.assertEqual(expected_output, data)
+
+    def test_save_to_file_square(self):
+        s1 = Square(7, 2, 8)
+        s2 = Square(4)
+        Square.save_to_file([s1, s2])
+        with open("Square.json", "r") as file:
+            content = file.read()
+        data = json.loads(content)
+        expected_output = [{"y": 8, "x": 2, "id": 1, "size": 7}, {"y": 0, "x": 0, "id": 2, "size": 4}]
         self.assertEqual(expected_output, data)
 
     def test_from_json_string(self):
@@ -85,6 +95,13 @@ class TestBase(unittest.TestCase):
         s1 = Square(3, 6, 2)
         s2 = Square(5)
         list_squares_input = [s1, s2]
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file()
+        for in_sq, out_sq in zip(list_squares_input, list_squares_output):
+            self.assertEqual(str(in_sq), str(out_sq))
+
+    def test_load_from_file_square_empty(self):
+        list_squares_input = []
         Square.save_to_file(list_squares_input)
         list_squares_output = Square.load_from_file()
         for in_sq, out_sq in zip(list_squares_input, list_squares_output):
