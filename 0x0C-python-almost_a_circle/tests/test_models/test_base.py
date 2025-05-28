@@ -56,3 +56,10 @@ class TestBase(unittest.TestCase):
         list_output = Rectangle.from_json_string(json_list_input)
         expected_output = [{'height': 4, 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]
         self.assertEqual(expected_output, list_output)
+
+    def test_create(self):
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        expected_output = "[Rectangle] (1) 1/0 - 3/5"
+        self.assertEqual(expected_output, str(r2))
