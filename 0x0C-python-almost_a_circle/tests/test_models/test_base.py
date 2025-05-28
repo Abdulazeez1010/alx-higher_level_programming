@@ -71,3 +71,21 @@ class TestBase(unittest.TestCase):
         sq2 = Square.create(**sq1_dictionary)
         expected_output = "[Square] (1) 4/0 - 3"
         self.assertEqual(expected_output, str(sq2))
+
+    def test_load_from_file_rect(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+        for in_rect, out_rect in zip(list_rectangles_input, list_rectangles_output):
+            self.assertEqual(str(in_rect), str(out_rect))
+
+    def test_load_from_file_square(self):
+        s1 = Square(3, 6, 2)
+        s2 = Square(5)
+        list_squares_input = [s1, s2]
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file()
+        for in_sq, out_sq in zip(list_squares_input, list_squares_output):
+            self.assertEqual(str(in_sq), str(out_sq))
