@@ -7,6 +7,7 @@ import json
 
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -57,9 +58,16 @@ class TestBase(unittest.TestCase):
         expected_output = [{'height': 4, 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]
         self.assertEqual(expected_output, list_output)
 
-    def test_create(self):
+    def test_create_rectangle(self):
         r1 = Rectangle(3, 5, 1)
         r1_dictionary = r1.to_dictionary()
         r2 = Rectangle.create(**r1_dictionary)
         expected_output = "[Rectangle] (1) 1/0 - 3/5"
         self.assertEqual(expected_output, str(r2))
+
+    def test_create_square(self):
+        sq1 = Square(3, 4)
+        sq1_dictionary = sq1.to_dictionary()
+        sq2 = Square.create(**sq1_dictionary)
+        expected_output = "[Square] (1) 4/0 - 3"
+        self.assertEqual(expected_output, str(sq2))
