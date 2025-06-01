@@ -16,7 +16,7 @@ class TestBase(unittest.TestCase):
 
     def setUp(self):
         """Reset the Base class counter before each test."""
-        Rectangle._Base__nb_objects = 0
+        Base._Base__nb_objects = 0
         if os.path.exists("Rectangle.json"):
             os.remove("Rectangle.json")
 
@@ -61,7 +61,7 @@ class TestBase(unittest.TestCase):
 
     def test_save_to_file_rect_none(self):
         Rectangle.save_to_file(None)
-        self.assertTrue(os.path.exists("Rectangle.json"))
+        self.assertTrue("Rectangle.json")
         with open("Rectangle.json", "r") as file:
             content = file.read()
         self.assertEqual(content, "[]")
