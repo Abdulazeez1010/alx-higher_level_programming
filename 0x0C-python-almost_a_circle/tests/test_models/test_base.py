@@ -19,6 +19,8 @@ class TestBase(unittest.TestCase):
         Base._Base__nb_objects = 0
         if os.path.exists("Rectangle.json"):
             os.remove("Rectangle.json")
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
 
     def test_base(self):
         """Test cases to validate correct output for Base class"""
